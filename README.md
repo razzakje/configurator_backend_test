@@ -1,2 +1,2 @@
 # FEconfigurator
-front end voor de configurator voor intelij
+backe end voor de configurator voor intelij
