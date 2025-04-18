@@ -4,12 +4,14 @@ public class Component {
     private int id;
     private String type;
     private String name;
+    private String description;
     private double price;
 
-    public Component(int id, String type, String name, double price) {
+    public Component(int id, String type, String name,String description, double price) {
         this.id = id;
         this.type = type;
         this.name = name;
+        this.description = description;
         this.price = price;
     }
 
@@ -22,6 +24,10 @@ public class Component {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public double getPrice() {

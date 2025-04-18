@@ -16,12 +16,13 @@ public class Configurator {
         this.name = name;
         this.components = components;
     }
+
     public static Configurator getComponents() {
         List<Component> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = """
-                SELECT * FROM product;
+                SELECT * FROM product order by productID asc;
             """;
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
@@ -30,8 +31,9 @@ public class Configurator {
                     components.add(new Component(
                             set.getInt("productID"),
                             set.getString("type"),
-                            set.getString("naam"),
-                            set.getDouble("prijs")
+                            set.getString("name"),
+                            set.getString("description"),
+                            set.getDouble("price")
                     ));
                 }
             }
@@ -42,27 +44,31 @@ public class Configurator {
         return new Configurator(0, "All Components", components);
     }
 
-    public static Configurator getConfigurator(int configuratieID) {
+    public static Configurator getConfigurator(String name) {
         List<Component> components = new ArrayList<>();
+        int configurationID = -1;
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             String sql = """
-                SELECT p.productID, p.naam, p.type, p.prijs
+                SELECT p.productID, p.name, p.type, p.description, p.price, pc.configurationID, c.name AS configName
                 FROM product p
-                INNER JOIN productConfiguratie pc ON p.productID = pc.productID
-                WHERE pc.configuratieID = ?
+                INNER JOIN productConfiguration pc ON p.productID = pc.productID
+                INNER JOIN configuration c ON pc.configurationID = c.configurationID
+                WHERE c.name = ?
             """;
 
             try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                statement.setInt(1, configuratieID);
+                statement.setString(1, name);
                 try (ResultSet set = statement.executeQuery()) {
                     while (set.next()) {
                         components.add(new Component(
                                 set.getInt("productID"),
                                 set.getString("type"),
-                                set.getString("naam"),
-                                set.getDouble("prijs")
+                                set.getString("name"),
+                                set.getString("description"),
+                                set.getDouble("price")
                         ));
+                        configurationID = set.getInt("configurationID");
                     }
                 }
             }
@@ -70,7 +76,7 @@ public class Configurator {
             e.printStackTrace();
         }
 
-        return new Configurator(configuratieID, "Configurator " + configuratieID, components);
+        return new Configurator(configurationID, name, components);
     }
 
     public int getId() {

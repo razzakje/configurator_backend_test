@@ -23,6 +23,7 @@ public class ComponentResource {
             job.add("id", component.getId());
             job.add("type", component.getType());
             job.add("name", component.getName());
+            job.add("description", component.getDescription());
             job.add("price", component.getPrice());
             jab.add(job);
         }
@@ -48,16 +49,17 @@ public class ComponentResource {
 //        return jab.build().toString();
 //    }
     @GET
-    @Path("/configurator/{id}")
+    @Path("/configurator/{name}")
     @Produces("application/json")
-    public String getComponentsByConfiguratie(@PathParam("id") int configuratieID) {
+    public String getComponentsByConfiguratie(@PathParam("name") String name) {
         JsonArrayBuilder jab = Json.createArrayBuilder();
 
-        for (Component component : Configurator.getConfigurator(configuratieID).getAllComponents()) {
+        for (Component component : Configurator.getConfigurator(name).getAllComponents()) {
             JsonObjectBuilder job = Json.createObjectBuilder();
             job.add("id", component.getId());
             job.add("type", component.getType());
             job.add("name", component.getName());
+            job.add("description", component.getDescription());
             job.add("price", component.getPrice());
             jab.add(job);
         }
