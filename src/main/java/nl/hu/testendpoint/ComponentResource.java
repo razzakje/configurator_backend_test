@@ -7,8 +7,11 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import nl.hu.testendpoint.domain.CPU;
 import nl.hu.testendpoint.domain.Component;
 import nl.hu.testendpoint.domain.Configurator;
+
+import java.util.ArrayList;
 
 @Path("/components")
 public class ComponentResource {
