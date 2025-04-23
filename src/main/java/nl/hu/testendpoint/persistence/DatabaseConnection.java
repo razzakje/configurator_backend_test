@@ -9,9 +9,9 @@ public class DatabaseConnection {
         if (connection == null || connection.isClosed()) {
             try {
                 Class.forName("org.postgresql.Driver");
-                String url = "jdbc:postgresql://localhost:5432/ConfigHUrator";
+                String url = "jdbc:postgresql://localhost:5432/configHUrator_local";
                 String user = "postgres";
-                String password = "test$!UsRR41";
+                String password = "Shi42Kl!@#daf";
                 connection = DriverManager.getConnection(url, user, password);
             } catch (ClassNotFoundException e) {
                 throw new SQLException("PostgreSQL JDBC Driver not found", e);

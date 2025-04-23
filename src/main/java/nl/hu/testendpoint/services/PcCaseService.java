@@ -13,7 +13,7 @@ public class PcCaseService {
         List<PcCase> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT pccase.productid, pccase.brand, pccase.motherboardFormat, pccase.fansBottom, pccase.fansSide, pccase.maximumCpuCoolerHeight, pccase.maximumGPULength, pccase.maximumPSULength, pccase.height, pccase.width, pccase.depth, pccase.releaseDate, product.price FROM pccase INNER JOIN product ON pccase.productid = product.productid;";
+            String sql = "SELECT pccase.productid, pccase.brand, pccase.motherboardFormat, pccase.fansBottom, pccase.fansSide, pccase.maximumCpuCoolerHeight, pccase.maximumGPULength, pccase.maximumPSULength, pccase.height, pccase.width, pccase.depth, pccase.releaseDate, product.price, product.name FROM pccase INNER JOIN product ON pccase.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -31,7 +31,8 @@ public class PcCaseService {
                             set.getInt("width"),
                             set.getInt("depth"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

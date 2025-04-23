@@ -14,10 +14,11 @@ public class PcCase {
     private int depth;
     private String releasedate;
     private double price;
+    private String name;
 
     public PcCase() {}
 
-    public PcCase(int productid, String brand, String motherboardformat, int fansbottom, int fansside, int maximumcpucoolerheight, int maximumgpulength, int maximumpsulength, int height, int width, int depth, String releasedate, double price) {
+    public PcCase(int productid, String brand, String motherboardformat, int fansbottom, int fansside, int maximumcpucoolerheight, int maximumgpulength, int maximumpsulength, int height, int width, int depth, String releasedate, double price, String name) {
         this.productid = productid;
         this.brand = brand;
         this.motherboardformat = motherboardformat;
@@ -31,6 +32,7 @@ public class PcCase {
         this.depth = depth;
         this.releasedate = releasedate;
         this.price = price;
+        this.name = name;
     }
 
     public int getProductid() { return productid; }
@@ -46,4 +48,5 @@ public class PcCase {
     public int getDepth() { return depth; }
     public String getReleasedate() { return releasedate; }
     public double getPrice() { return price; }
+    public String getName() { return name; }
 }

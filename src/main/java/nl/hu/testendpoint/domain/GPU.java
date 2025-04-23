@@ -11,10 +11,11 @@ public class GPU {
     private int memoryclock;
     private String releasedate;
     private double price;
+    private String name;
 
     public GPU() {}
 
-    public GPU(int productid, String brand, String gpuserie, String gpumodel, int vram, int businterface, int gpuclock, int memoryclock, String releasedate, double price) {
+    public GPU(int productid, String brand, String gpuserie, String gpumodel, int vram, int businterface, int gpuclock, int memoryclock, String releasedate, double price, String name) {
         this.productid = productid;
         this.brand = brand;
         this.gpuserie = gpuserie;
@@ -25,6 +26,7 @@ public class GPU {
         this.memoryclock = memoryclock;
         this.releasedate = releasedate;
         this.price = price;
+        this.name = name;
     }
 
     public int getProductid() { return productid; }
@@ -37,4 +39,5 @@ public class GPU {
     public int getMemoryclock() { return memoryclock; }
     public String getReleasedate() { return releasedate; }
     public double getPrice() { return price; }
+    public String getName() { return name; }
 }

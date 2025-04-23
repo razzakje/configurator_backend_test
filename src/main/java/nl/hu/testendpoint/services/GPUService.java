@@ -13,7 +13,7 @@ public class GPUService {
         List<GPU> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT gpu.productid, gpu.brand, gpu.gpuSerie, gpu.gpuModel, gpu.vram, gpu.busInterface, gpu.gpuClock, gpu.memoryClock, gpu.releaseDate, product.price FROM gpu INNER JOIN product ON gpu.productid = product.productid;";
+            String sql = "SELECT gpu.productid, gpu.brand, gpu.gpuSerie, gpu.gpuModel, gpu.vram, gpu.busInterface, gpu.gpuClock, gpu.memoryClock, gpu.releaseDate, product.price, product.name FROM gpu INNER JOIN product ON gpu.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -28,7 +28,8 @@ public class GPUService {
                             set.getInt("gpuClock"),
                             set.getInt("memoryClock"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

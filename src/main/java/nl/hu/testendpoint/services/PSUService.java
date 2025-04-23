@@ -13,7 +13,7 @@ public class PSUService {
         List<PSU> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT psu.productid, psu.brand, psu.power, psu.certificate80Plus, psu.releaseDate, product.price FROM psu INNER JOIN product ON psu.productid = product.productid;";
+            String sql = "SELECT psu.productid, psu.brand, psu.power, psu.certificate80Plus, psu.releaseDate, product.price, product.name FROM psu INNER JOIN product ON psu.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -24,7 +24,8 @@ public class PSUService {
                             set.getInt("power"),
                             set.getString("certificate80Plus"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

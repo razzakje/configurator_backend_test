@@ -13,7 +13,7 @@ public class StorageService {
         List<Storage> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT storage.productid, storage.brand, storage.storageCapacity, storage.storageConnection, storage.readSpeed, storage.diskSpeed, storage.storageType, storage.releaseDate, product.price FROM storage INNER JOIN product ON storage.productid = product.productid;";
+            String sql = "SELECT storage.productid, storage.brand, storage.storageCapacity, storage.storageConnection, storage.readSpeed, storage.diskSpeed, storage.storageType, storage.releaseDate, product.price, product.name FROM storage INNER JOIN product ON storage.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -27,7 +27,8 @@ public class StorageService {
                             set.getInt("diskSpeed"),
                             set.getString("storageType"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

@@ -13,7 +13,7 @@ public class RAMService {
         List<RAM> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT ram.productid, ram.brand, ram.amount, ram.memory, ram.memorySpeed, ram.timing, ram.ddrVersion, ram.releaseDate, product.price FROM ram INNER JOIN product ON ram.productid = product.productid;";
+            String sql = "SELECT ram.productid, ram.brand, ram.amount, ram.memory, ram.memorySpeed, ram.timing, ram.ddrVersion, ram.releaseDate, product.price, product.name FROM ram INNER JOIN product ON ram.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -27,7 +27,8 @@ public class RAMService {
                             set.getInt("timing"),
                             set.getInt("ddrVersion"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

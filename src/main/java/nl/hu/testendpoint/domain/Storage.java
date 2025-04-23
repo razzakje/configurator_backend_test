@@ -10,10 +10,11 @@ public class Storage {
     private String storagetype;
     private String releasedate;
     private double price;
+    private String name;
 
     public Storage() {}
 
-    public Storage(int productid, String brand, int storagecapacity, String storageconnection, int readspeed, int diskspeed, String storagetype, String releasedate, double price) {
+    public Storage(int productid, String brand, int storagecapacity, String storageconnection, int readspeed, int diskspeed, String storagetype, String releasedate, double price, String name) {
         this.productid = productid;
         this.brand = brand;
         this.storagecapacity = storagecapacity;
@@ -23,6 +24,7 @@ public class Storage {
         this.storagetype = storagetype;
         this.releasedate = releasedate;
         this.price = price;
+        this.name = name;
     }
 
     public int getProductid() { return productid; }
@@ -34,4 +36,5 @@ public class Storage {
     public String getStoragetype() { return storagetype; }
     public String getReleasedate() { return releasedate; }
     public double getPrice() { return price; }
+    public String getName() { return name; }
 }

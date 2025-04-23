@@ -10,10 +10,11 @@ public class RAM {
     private int ddrversion;
     private String releasedate;
     private double price;
+    private String name;
 
     public RAM() {}
 
-    public RAM(int productid, String brand, int amount, int memory, int memoryspeed, int timing, int ddrversion, String releasedate, double price) {
+    public RAM(int productid, String brand, int amount, int memory, int memoryspeed, int timing, int ddrversion, String releasedate, double price, String name) {
         this.productid = productid;
         this.brand = brand;
         this.amount = amount;
@@ -23,6 +24,7 @@ public class RAM {
         this.ddrversion = ddrversion;
         this.releasedate = releasedate;
         this.price = price;
+        this.name = name;
     }
 
     public int getProductid() { return productid; }
@@ -34,4 +36,5 @@ public class RAM {
     public int getDdrversion() { return ddrversion; }
     public String getReleasedate() { return releasedate; }
     public double getPrice() { return price; }
+    public String getName() { return name; }
 }

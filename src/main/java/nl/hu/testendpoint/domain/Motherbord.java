@@ -16,10 +16,11 @@ public class Motherbord {
     private int usb30gen2;
     private String releasedate;
     private double price;
+    private String name;
 
     public Motherbord() {}
 
-    public Motherbord(int productid, String brand, String formfactor, String socket, String chipset, int memoryslots, int maxmemory, int ddrversion, String wifi, int m2slots, int usb2, int usb30gen1, int usb30gen2, String releasedate, double price) {
+    public Motherbord(int productid, String brand, String formfactor, String socket, String chipset, int memoryslots, int maxmemory, int ddrversion, String wifi, int m2slots, int usb2, int usb30gen1, int usb30gen2, String releasedate, double price, String name) {
         this.productid = productid;
         this.brand = brand;
         this.formfactor = formfactor;
@@ -35,6 +36,7 @@ public class Motherbord {
         this.usb30gen2 = usb30gen2;
         this.releasedate = releasedate;
         this.price = price;
+        this.name = name;
     }
 
     public int getProductid() { return productid; }
@@ -52,4 +54,5 @@ public class Motherbord {
     public int getUsb30gen2() { return usb30gen2; }
     public String getReleasedate() { return releasedate; }
     public double getPrice() { return price; }
+    public String getName() { return name; }
 }

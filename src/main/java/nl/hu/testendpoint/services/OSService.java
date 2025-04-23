@@ -13,7 +13,7 @@ public class OSService {
         List<OS> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT os.productid, os.operatingSystem, product.price FROM os INNER JOIN product ON os.productid = product.productid;";
+            String sql = "SELECT os.productid, os.operatingSystem, product.price, product.name FROM os INNER JOIN product ON os.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -21,7 +21,8 @@ public class OSService {
                     components.add(new OS(
                             set.getInt("productID"),
                             set.getString("operatingSystem"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

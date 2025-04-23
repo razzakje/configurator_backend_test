@@ -20,10 +20,11 @@ public class CPU {
     private int tdp;
     private String releasedate;
     private double price;
+    private String name;
 
     public CPU() {}
 
-    public CPU(int productid, String brand, String processorserie, String processormodel, String socket, int clockspeed, int cores, String integradedgraphics, int tdp, String releasedate, double price) {
+    public CPU(int productid, String brand, String processorserie, String processormodel, String socket, int clockspeed, int cores, String integradedgraphics, int tdp, String releasedate, double price, String name) {
         this.productid = productid;
         this.brand = brand;
         this.processorserie = processorserie;
@@ -35,6 +36,7 @@ public class CPU {
         this.tdp = tdp;
         this.releasedate = releasedate;
         this.price = price;
+        this.name = name;
     }
 
     public int getProductid() { return productid; }
@@ -48,6 +50,7 @@ public class CPU {
     public int getTdp() { return tdp; }
     public String getReleasedate() { return releasedate; }
     public double getPrice() { return price; }
+    public String getName() { return name; }
 
 
 }

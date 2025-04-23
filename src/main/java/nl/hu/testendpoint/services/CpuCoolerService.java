@@ -13,7 +13,7 @@ public class CpuCoolerService {
         List<CpuCooler> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT cpucooler.productid, cpucooler.brand, cpucooler.sockets, cpucooler.sizeMM, cpucooler.heightMM, cpucooler.soundDB, cpucooler.releaseDate, product.price FROM cpucooler INNER JOIN product ON cpucooler.productid = product.productid;";
+            String sql = "SELECT cpucooler.productid, cpucooler.brand, cpucooler.sockets, cpucooler.sizeMM, cpucooler.heightMM, cpucooler.soundDB, cpucooler.releaseDate, product.price, product.name FROM cpucooler INNER JOIN product ON cpucooler.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -26,7 +26,8 @@ public class CpuCoolerService {
                             set.getInt("heightMM"),
                             set.getInt("soundDB"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }

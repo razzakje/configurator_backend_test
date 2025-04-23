@@ -13,7 +13,7 @@ public class MotherbordService {
         List<Motherbord> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT motherbord.productid, motherbord.brand, motherbord.formFactor, motherbord.socket, motherbord.chipSet, motherbord.memorySlots, motherbord.maxMemory, motherbord.ddrVersion, motherbord.WIFI, motherbord.m2Slots, motherbord.usb2, motherbord.usb30gen1, motherbord.usb30gen2, motherbord.releaseDate, product.price FROM motherbord INNER JOIN product ON motherbord.productid = product.productid;";
+            String sql = "SELECT motherbord.productid, motherbord.brand, motherbord.formFactor, motherbord.socket, motherbord.chipSet, motherbord.memorySlots, motherbord.maxMemory, motherbord.ddrVersion, motherbord.WIFI, motherbord.m2Slots, motherbord.usb2, motherbord.usb30gen1, motherbord.usb30gen2, motherbord.releaseDate, product.price, product.name FROM motherbord INNER JOIN product ON motherbord.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -33,7 +33,8 @@ public class MotherbordService {
                             set.getInt("usb30gen1"),
                             set.getInt("usb30gen2"),
                             set.getString("releaseDate"),
-                            set.getDouble("price")
+                            set.getDouble("price"),
+                            set.getString("name")
                     ));
                 }
             }
