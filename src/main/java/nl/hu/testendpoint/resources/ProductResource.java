@@ -3,7 +3,7 @@ package nl.hu.testendpoint.resources;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import nl.hu.testendpoint.domain.Component;
-import nl.hu.testendpoint.domain.ProductService;
+import nl.hu.testendpoint.services.ProductService;
 
 import java.util.List;
 

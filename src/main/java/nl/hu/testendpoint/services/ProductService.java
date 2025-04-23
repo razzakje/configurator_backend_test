@@ -1,4 +1,4 @@
-package nl.hu.testendpoint.domain;
+package nl.hu.testendpoint.services;
 
 import nl.hu.testendpoint.domain.Component;
 import nl.hu.testendpoint.persistence.DatabaseConnection;
