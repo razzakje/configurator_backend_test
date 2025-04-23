@@ -1,4 +1,4 @@
-package nl.hu.testendpoint.domain;
+package nl.hu.testendpoint.services;
 
 import nl.hu.testendpoint.domain.CPU;
 import nl.hu.testendpoint.persistence.DatabaseConnection;
@@ -13,7 +13,8 @@ public class CPUService {
         List<CPU> components = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            String sql = "SELECT * FROM cpu";
+            String sql = "SELECT cpu.productid, cpu.brand, cpu.processorserie, cpu.processormodel, cpu.socket, cpu.clockspeed, cpu.cores, cpu.integradedgraphics, cpu.tdp, cpu.releasedate, product.price " +
+                    "FROM cpu INNER JOIN product ON cpu.productid = product.productid;";
             try (PreparedStatement statement = conn.prepareStatement(sql);
                  ResultSet set = statement.executeQuery()) {
 
@@ -28,7 +29,8 @@ public class CPUService {
                             set.getInt("cores"),
                             set.getString("integradedgraphics"),
                             set.getInt("tdp"),
-                            set.getString("releasedate")
+                            set.getString("releasedate"),
+                            set.getDouble("price")
                     ));
                 }
             }

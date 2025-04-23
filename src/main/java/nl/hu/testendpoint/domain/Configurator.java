@@ -79,6 +79,10 @@ public class Configurator {
         return new Configurator(configurationID, name, components);
     }
 
+    public void addComponent(Component component) {
+
+    }
+
     public int getId() {
         return id;
     }

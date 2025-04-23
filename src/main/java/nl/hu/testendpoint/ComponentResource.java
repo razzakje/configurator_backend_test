@@ -3,10 +3,9 @@ package nl.hu.testendpoint;
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObjectBuilder;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import nl.hu.testendpoint.domain.CPU;
 import nl.hu.testendpoint.domain.Component;
 import nl.hu.testendpoint.domain.Configurator;
@@ -69,4 +68,5 @@ public class ComponentResource {
 
         return jab.build().toString();
     }
+
 }
